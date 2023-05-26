@@ -1,0 +1,10 @@
+services:
+  app:
+    build: ./Django-Poll-App
+    ports:
+      - 8000:8000
+
+  nginx:
+    build: ./nginx-django
+    ports:
+      - 80:80
