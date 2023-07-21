@@ -4,7 +4,7 @@ name: CI/CD
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
@@ -17,6 +17,6 @@ jobs:
           username: ${{secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/ubuntu/stop-watch-app-1
+            cd /home/ubuntu/pollme1
             sudo git pull origin main
             echo "Done"
