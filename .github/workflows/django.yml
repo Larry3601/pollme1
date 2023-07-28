@@ -18,7 +18,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /home/ubuntu/pollme1/ 
-            sudo docker-composer down
+            sudo docker-compose down
             sudo git pull origin master
             sudo docker-compose up --build
             echo "Done"
