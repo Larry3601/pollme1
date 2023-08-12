@@ -1,26 +1,22 @@
-
-name: CI/CD
-
+name: CICD for docker-compose
 on:
   push:
     branches:
-      - master
-
+    - master
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy via SSH
+      - name: deploy via ssh
         uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+        with: 
+          host: ${{secrets.SSH_HOST}}
+          username: ${{secrets.SSH_USERNAME}}
+          key: ${{secrets.SSH_PRIVATE_KEY}}
           script: |
-            cd /home/ubuntu/pollme1/ 
+            cd /home/ubuntu/doc_comp
             sudo docker-compose down
             sudo git pull origin master
             sudo docker-compose build
             sudo docker-compose up -d
-            sudo docker-compose up 
             echo "Done"
